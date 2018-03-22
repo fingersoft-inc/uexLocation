@@ -300,8 +300,13 @@ public class EUExLocation extends EUExBase{
 		public void onLocation(double lat, double log, float radius) {
             //将baidu坐标系转成指定的
             double [] result = transferByType(log, lat, BD09, defaultType);
-			String js = SCRIPT_HEADER + "if(" + onFunction + "){" + onFunction + "(" + result[1] + "," + result[0] + "," + radius + ");}";
-			mBrwView.loadUrl(js);
+			final String js = SCRIPT_HEADER + "if(" + onFunction + "){" + onFunction + "(" + result[1] + "," + result[0] + "," + radius + ");}";
+			mBrwView.post(new Runnable() {
+				@Override
+				public void run() {
+					mBrwView.loadUrl(js);
+				}
+			});
 		}
 	}
 
