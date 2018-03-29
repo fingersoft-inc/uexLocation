@@ -204,5 +204,10 @@ public class BaiduLocation {
             innerLocCallback(dLat, dLog, dRadius);
         }
 
+//        @Override
+        public void onConnectHotSpotMessage(String s, int i) {
+
+        }
+
     }
 }
